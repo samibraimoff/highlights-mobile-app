@@ -1,5 +1,6 @@
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import { ThemeProvider, DefaultTheme } from "@react-navigation/native";
+import "../global.css";
 
 const CustomTheme = {
   ...DefaultTheme,
@@ -13,9 +14,7 @@ const CustomTheme = {
 const MainLayout = () => {
   return (
     <ThemeProvider value={CustomTheme}>
-      <Stack>
-        <Stack.Screen name={"index"} options={{ title: "Home" }} />
-      </Stack>
+      <Slot />
     </ThemeProvider>
   );
 };
