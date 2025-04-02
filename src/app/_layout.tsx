@@ -5,6 +5,8 @@ import { useReactQueryDevTools } from "@dev-plugins/react-query";
 
 import "../global.css";
 
+const queryClient = new QueryClient();
+
 const CustomTheme = {
   ...DefaultTheme,
   colors: {
@@ -15,7 +17,6 @@ const CustomTheme = {
 };
 
 const MainLayout = () => {
-  const queryClient = new QueryClient();
   useReactQueryDevTools(queryClient);
 
   return (
