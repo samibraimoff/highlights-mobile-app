@@ -1,7 +1,7 @@
 import FeedGameItem from "@/components/feed-game-item";
 import { useGames } from "@/hooks/use-games";
 import { Link } from "expo-router";
-import { ActivityIndicator, Text, View, FlatList, Image } from "react-native";
+import { ActivityIndicator, Text, View, FlatList } from "react-native";
 
 const HomeScreen = () => {
   const { data, isLoading, error } = useGames();
