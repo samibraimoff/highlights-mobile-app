@@ -4,14 +4,16 @@ export interface Video {
   embed: string;
 }
 
+export interface Game {
+  title: string;
+  competition: string;
+  matchviewUrl: string;
+  competitionUrl: string;
+  thumbnail: string;
+  date: string;
+  videos: Video[];
+}
+
 export interface Games {
-  response: {
-    title: string;
-    competition: string;
-    matchviewUrl: string;
-    competitionUrl: string;
-    thumbnail: string;
-    date: string;
-    videos: Video[];
-  };
+  response: Game[];
 }

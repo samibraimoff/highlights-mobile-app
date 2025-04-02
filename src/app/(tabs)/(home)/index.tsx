@@ -1,4 +1,6 @@
+import FeedGameItem from "@/components/feed-game-item";
 import { useGames } from "@/hooks/use-games";
+import { Link } from "expo-router";
 import { ActivityIndicator, Text, View, FlatList, Image } from "react-native";
 
 const HomeScreen = () => {
@@ -16,10 +18,9 @@ const HomeScreen = () => {
       <FlatList
         data={data?.response}
         renderItem={({ item }) => (
-          <Image
-            source={{ uri: item?.thumbnail }}
-            style={{ width: 200, height: 200 }}
-          />
+          <Link href={""} asChild>
+            <FeedGameItem {...item} />
+          </Link>
         )}
       />
     </View>
