@@ -1,14 +1,14 @@
 import { Text, View } from "react-native";
 
-const ExploreScreen = () => {
+const SearchScreen = () => {
   return (
     <View className={"flex justify-center items-center"}>
-      <Text className={"text-red-600 text-2xl"}>Explore Leagues</Text>
+      <Text className={"text-red-600 text-2xl"}>Search Leagues</Text>
       <Text className={"text-red-600 text-2xl"}>
-        here we will have list of leagues and competitions
+        searching teams and leagues
       </Text>
     </View>
   );
 };
 
-export default ExploreScreen;
+export default SearchScreen;

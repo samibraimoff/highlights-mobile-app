@@ -1,26 +1,36 @@
 import FeedGameItem from "@/components/feed-game-item";
 import { useGames } from "@/hooks/use-games";
-import { Link } from "expo-router";
-import { ActivityIndicator, Text, View, FlatList } from "react-native";
+import { Game } from "@/types";
+import {
+  ActivityIndicator,
+  TouchableOpacity,
+  Text,
+  View,
+  FlatList,
+} from "react-native";
+import { useRouter } from "expo-router";
 
 const HomeScreen = () => {
   const { data, isLoading, error } = useGames();
+  const router = useRouter();
 
   return (
-    <View className={"flex justify-center items-center"}>
-      <Text className={"text-black text-2xl"}>Latest highlights</Text>
-      {isLoading && <ActivityIndicator />}
+    <View className="flex-1 justify-center items-center bg-black p-4">
+      <Text className="text-white text-2xl font-bold">Latest Highlights</Text>
+      {isLoading && <ActivityIndicator color="#fff" />}
       {error && (
-        <Text className={"text-red-600 text-2xl"}>
+        <Text className="text-red-600 text-2xl">
           Something went wrong, please try again
         </Text>
       )}
+
       <FlatList
         data={data?.response}
-        renderItem={({ item }) => (
-          <Link href={""} asChild>
+        keyExtractor={(item) => item.title}
+        renderItem={({ item }: { item: Game }) => (
+          <TouchableOpacity onPress={() => router.push(`/game/${item.title}`)}>
             <FeedGameItem {...item} />
-          </Link>
+          </TouchableOpacity>
         )}
       />
     </View>
