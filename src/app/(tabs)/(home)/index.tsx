@@ -16,8 +16,8 @@ const HomeScreen = () => {
   const router = useRouter();
 
   return (
-    <SafeAreaView className="flex-1 justify-center items-center bg-black p-4">
-      <Text className="text-white text-2xl font-bold">Latest Highlights</Text>
+    <SafeAreaView className="items-center justify-center flex-1 p-4 bg-black">
+      <Text className="text-2xl font-bold text-white">Latest Highlights</Text>
       {isLoading && (
         <View className={"flex-1 justify-center items-center"}>
           <ActivityIndicator color="#0A84FF" />
@@ -25,17 +25,17 @@ const HomeScreen = () => {
       )}
       {error && (
         <View className={"flex-1 justify-center items-center"}>
-          <Text className="text-red-600 text-2xl text-center">
+          <Text className="text-2xl text-center text-red-600">
             Something went wrong, please try again
           </Text>
         </View>
       )}
 
       <FlatList
-        data={data?.response.slice(0, 10)}
-        keyExtractor={(item) => item.title}
+        data={data?.data}
+        keyExtractor={(item: Game) => item.id.toString()}
         renderItem={({ item }: { item: Game }) => (
-          <TouchableOpacity onPress={() => router.push(`/game/${item.title}`)}>
+          <TouchableOpacity onPress={() => router.push(`game/${item.id}`)}>
             <FeedGameItem {...item} />
           </TouchableOpacity>
         )}

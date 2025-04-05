@@ -1,12 +1,34 @@
-export async function fetchGames() {
-  const response = await fetch(
-    `${process.env.EXPO_PUBLIC_MAIN_URL}/feed/?token=${process.env.EXPO_PUBLIC_HIGHLIGHTS_PUBLIC_KEY}`,
-  );
+import { Games } from "@/types";
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch games");
+export async function fetchGames(): Promise<Games> {
+  const baseUrl = process.env.EXPO_PUBLIC_FOOTBALL_HIGHLIGHT_URI;
+  if (!baseUrl) {
+    throw new Error("Base URL is not defined");
   }
 
-  const data = await response.json();
-  return data;
+  const url = new URL(`${baseUrl}/highlights`);
+  url.searchParams.append("countryCode", "GB-ENG");
+  url.searchParams.append("limit", "10");
+
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": process.env
+        .EXPO_PUBLIC_FOOTBALL_HIGHLIGHT_API_KEY as string,
+      "x-rapidapi-host": process.env
+        .EXPO_PUBLIC_FOOTBALL_HIGHLIGHT_HOST as string,
+    },
+  };
+
+  try {
+    const response = await fetch(url.toString(), options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data: Games = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error retrieving highlights:", error);
+    throw error;
+  }
 }
