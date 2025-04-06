@@ -1,6 +1,6 @@
 import { Games } from "@/types";
 
-export async function fetchGames(): Promise<Games> {
+export async function fetchAllGames(): Promise<Games> {
   const baseUrl = process.env.EXPO_PUBLIC_FOOTBALL_HIGHLIGHT_URI;
   if (!baseUrl) {
     throw new Error("Base URL is not defined");

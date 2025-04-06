@@ -13,7 +13,7 @@ const FeedGameItem = ({
   const { league } = match;
   return (
     <View className={"border border-1 my-2"}>
-      {imgUrl && <Image source={{ uri: imgUrl }} className={"w-full h-40"} />}
+      {imgUrl && <Image source={{ uri: imgUrl }} className={"w-full h-56"} />}
       <View className={"flex items-center justify-between"}>
         <Text className={"text-center text-white text-2xl"}>{title}</Text>
       </View>

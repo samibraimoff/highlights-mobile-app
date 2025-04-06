@@ -1,54 +1,49 @@
+import { useGame } from "@/hooks/use-game";
+import { Game } from "@/types";
 import { useLocalSearchParams } from "expo-router";
-import {
-  Text,
-  View,
-  ScrollView,
-  Dimensions,
-  ActivityIndicator,
-} from "react-native";
-import WebView from "react-native-webview";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useGames } from "@/hooks/use-games";
+import { VideoPlayer } from "@/components/video-player";
 
-const { width } = Dimensions.get("window");
-const videoHeight = (width * 9) / 16;
+import { ActivityIndicator, Text, ScrollView } from "react-native";
 
 const GameDetails = () => {
-  const { id } = useLocalSearchParams();
-  const { data } = useGames();
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { data, isLoading, error } = useGame(id);
 
-  const game = data?.response.find((g) => g.title === id);
-  const firstVideoEmbed = game?.videos[0].embed;
-  if (!game) {
+  if (isLoading) {
     return (
-      <View className="flex-1 justify-center items-center bg-black p-4">
-        <Text className="text-white text-xl font-semibold">Game not found</Text>
-      </View>
+      <SafeAreaView className="items-center justify-center flex-1 bg-black">
+        <ActivityIndicator color="#0A84FF" size="large" />
+      </SafeAreaView>
     );
   }
 
+  if (error || !data || data.length === 0) {
+    return (
+      <SafeAreaView className="items-center justify-center flex-1 bg-black">
+        <Text className="text-xl text-white">
+          Something went wrong, please try again.
+        </Text>
+      </SafeAreaView>
+    );
+  }
+  if (!data) {
+    return (
+      <SafeAreaView className="items-center justify-center flex-1 bg-black">
+        <Text className="text-xl text-white">Game not found</Text>
+      </SafeAreaView>
+    );
+  }
+
+  const game: Game = data[0];
+
   return (
-    <SafeAreaView className={"flex-1 bg-black"}>
+    <SafeAreaView className="flex-1 bg-black">
       <ScrollView>
-        <Text className="text-white text-3xl font-bold">{game.title}</Text>
-        <Text className="text-white text-lg mb-6">{game.competition}</Text>
-        {firstVideoEmbed && (
-          <WebView
-            source={{ html: firstVideoEmbed }}
-            style={{ width, height: videoHeight }}
-            allowsFullscreenVideo
-            javaScriptEnabled
-            domStorageEnabled
-            allowsInlineMediaPlayback
-            startInLoadingState
-            renderLoading={() => (
-              <ActivityIndicator
-                style={{ flex: 1 }}
-                color="white"
-                size="large"
-              />
-            )}
-          />
+        <Text className="mb-2 text-3xl font-bold text-white">{game.title}</Text>
+        {game.url && <VideoPlayer url={game.url} />}
+        {game.description && (
+          <Text className="mt-4 text-white">{game.description}</Text>
         )}
       </ScrollView>
     </SafeAreaView>

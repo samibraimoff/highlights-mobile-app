@@ -16,7 +16,7 @@ const HomeScreen = () => {
   const router = useRouter();
 
   return (
-    <SafeAreaView className="items-center justify-center flex-1 p-4 bg-black">
+    <SafeAreaView className="items-center justify-center flex-1 bg-black">
       <Text className="text-2xl font-bold text-white">Latest Highlights</Text>
       {isLoading && (
         <View className={"flex-1 justify-center items-center"}>
