@@ -1,4 +1,4 @@
-import { useGame } from "@/hooks/use-game";
+import { useGame } from "@/hooks/use-games";
 import { Game } from "@/types";
 import { useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
