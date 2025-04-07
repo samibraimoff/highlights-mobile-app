@@ -25,80 +25,62 @@ const extractYouTubeId = (url: string): string | null => {
   return match ? match[1] : null;
 };
 
+const VideoContainer: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <View
+    className="w-full bg-black"
+    style={{
+      width: windowWidth,
+      height: calculatedHeight,
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {children}
+  </View>
+);
+
 export const VideoPlayer = ({ url }: VideoPlayerProps) => {
   if (isYouTubeUrl(url)) {
     const videoId = extractYouTubeId(url);
     if (!videoId) {
       return (
-        <View
-          className="w-full bg-black"
-          style={{
-            aspectRatio: 16 / 9,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <VideoContainer>
           <Text className="text-white">Invalid YouTube URL</Text>
-        </View>
+        </VideoContainer>
       );
     }
     return (
-      <View
-        className="w-full bg-black"
-        style={{
-          width: windowWidth,
-          height: calculatedHeight,
-          backgroundColor: "black",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <VideoContainer>
         <YoutubeIframe
           videoId={videoId}
           height={calculatedHeight}
           width={windowWidth}
           play={true}
         />
-      </View>
+      </VideoContainer>
     );
   } else if (isDirectMediaUrl(url)) {
     return (
-      <View
-        className="w-full bg-black"
-        style={{
-          width: windowWidth,
-          height: calculatedHeight,
-          backgroundColor: "black",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <VideoContainer>
         <Video
           source={{ uri: url }}
           useNativeControls
           shouldPlay
           style={{ width: windowWidth, height: calculatedHeight }}
         />
-      </View>
+      </VideoContainer>
     );
   } else {
     // Fallback using WebView for other embed types or unknown domains.
     return (
-      <View
-        className="w-full bg-black"
-        style={{
-          width: windowWidth,
-          height: calculatedHeight,
-          backgroundColor: "black",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <VideoContainer>
         <WebView
           source={{ uri: url }}
           style={{ width: "100%", height: "100%" }}
         />
-      </View>
+      </VideoContainer>
     );
   }
 };
