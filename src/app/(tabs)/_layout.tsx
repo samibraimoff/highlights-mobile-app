@@ -37,7 +37,7 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name={"explore"}
+        name={"(explore)"}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
