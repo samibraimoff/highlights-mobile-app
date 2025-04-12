@@ -11,7 +11,10 @@ const HomeLayout = () => {
       }}
     >
       <Stack.Screen name={"index"} options={{ headerShown: false }} />
-      <Stack.Screen name={"game/[id]"} options={{ title: "Game" }} />
+      <Stack.Screen
+        name={"game/[id]"}
+        options={{ title: "Game", headerBackTitle: "Highlights" }}
+      />
     </Stack>
   );
 };

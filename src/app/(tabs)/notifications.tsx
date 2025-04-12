@@ -8,4 +8,4 @@ const NotificationsScreen = () => {
   );
 };
 
-export default NotificationsScreen;
+// export default NotificationsScreen;

@@ -7,8 +7,9 @@ export async function fetchAllGames(): Promise<Games> {
   }
 
   const url = new URL(`${baseUrl}/highlights`);
-  url.searchParams.append("countryCode", "GB-ENG");
-  url.searchParams.append("limit", "10");
+  url.searchParams.append("countryCode", "KZ");
+  url.searchParams.append("limit", "20");
+  url.searchParams.append("season", "2025");
 
   const options = {
     method: "GET",
@@ -26,6 +27,14 @@ export async function fetchAllGames(): Promise<Games> {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data: Games = await response.json();
+    // return data;
+    const seen = new Set<string>();
+    data.data = data.data.filter((game) => {
+      if (seen.has(game.title)) return false;
+      seen.add(game.title);
+      return true;
+    });
+
     return data;
   } catch (error) {
     console.error("Error retrieving highlights:", error);
