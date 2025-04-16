@@ -3,7 +3,7 @@
     "name": "The Highlight Reel",
     "slug": "highlights-app",
     "scheme": "soccer-highlights-app",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -14,7 +14,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "buildNumber": "5",
+      "buildNumber": "6",
       "supportsTablet": true,
       "bundleIdentifier": "com.sandibek.highlightsapp",
       "infoPlist": {
