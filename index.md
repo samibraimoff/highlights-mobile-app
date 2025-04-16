@@ -55,4 +55,4 @@ We reserve the right to modify or replace these Terms at any time. Any changes w
 
 ## 7. Contact Information
 
-For questions regarding these Terms or to file a DMCA notice, please contact us at: **s.ibraimov85@gmail.com**
+For questions regarding these Terms or to file a DMCA notice, please contact us, email: **s.ibraimov85@gmail.com**
