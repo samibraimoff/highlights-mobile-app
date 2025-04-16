@@ -24,7 +24,7 @@ const TabsLayout = () => {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name={"search"}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -59,7 +59,7 @@ const TabsLayout = () => {
             />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 };
