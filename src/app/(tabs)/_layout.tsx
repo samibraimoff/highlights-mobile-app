@@ -24,42 +24,6 @@ const TabsLayout = () => {
           ),
         }}
       />
-      {/* <Tabs.Screen
-        name={"search"}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="magnify"
-              size={size * 1.2}
-              color={color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name={"(explore)"}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="soccer-field"
-              size={size * 1.2}
-              color={color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name={"notifications"}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="trophy"
-              size={size * 1.2}
-              color={color}
-            />
-          ),
-        }}
-      /> */}
     </Tabs>
   );
 };
