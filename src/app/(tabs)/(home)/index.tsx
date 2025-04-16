@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="items-center justify-center flex-1 bg-black">
-      <Text className="mb-6 text-2xl font-bold text-white">
+      <Text className="mb-6 text-2xl font-bold text-center text-white">
         Latest Kazakhstan Soccer Highlights
       </Text>
       {isLoading && (

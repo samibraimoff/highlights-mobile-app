@@ -2,15 +2,39 @@
 
 # dependencies
 node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
 
-/ios
-/android
+# iOS
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/*.xcworkspace
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcodeproj/xcuserdata/
+
+# Android
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/gradle/
+android/local.properties
 
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
+.bundle/
 expo-env.d.ts
+
+# Logs
+*.log
+
+# Test/coverage
+coverage/
 
 # Native
 *.orig.*

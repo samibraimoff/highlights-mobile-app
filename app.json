@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "highlights-app",
+    "name": "The Highlight Reel",
     "slug": "highlights-app",
     "scheme": "soccer-highlights-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -14,6 +14,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "buildNumber": "2",
       "supportsTablet": true,
       "bundleIdentifier": "com.sandibek.highlightsapp",
       "infoPlist": {
@@ -31,9 +32,7 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router"],
     "extra": {
       "router": {
         "origin": false

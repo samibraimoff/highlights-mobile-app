@@ -1,0 +1,17 @@
+# Ignore dev-only files
+README.md
+scripts/
+docs/
+tests/
+
+# Ignore platform-specific build artifacts
+ios/build/
+android/app/build/
+
+# Ignore IDE/project junk
+.vscode/
+.idea/
+
+# Don't upload env files (if injecting separately)
+.env
+.env.*
